@@ -59,7 +59,7 @@ class NewSnapForm extends Component {
     }
 
     render() {
-        const { session } = this.props;
+        const activeUser = this.props.session && this.props.session.activeUser ? this.props.session.activeUser : null; 
         const optimisticResponse = {
             __typename: "Mutation",
             addSnap: {
@@ -69,7 +69,7 @@ class NewSnapForm extends Component {
                 createdAt: new Date(),
                 user: {
                     __typename: "User",
-                    ...session.activeUser
+                    ...activeUser
                 }
             }
         };
@@ -92,8 +92,8 @@ class NewSnapForm extends Component {
                                 name="text"
                                 value={this.state.text}
                                 onChange={this.onChange}
-                                placeholder={ session && session.activeUser ? "add snap" : "please login" } 
-                                disabled={ !(session && session.activeUser) }
+                                placeholder={ this.props.session && this.props.session.activeUser ? "add snap" : "please login" } 
+                                disabled={ !(this.props.session && this.props.session.activeUser) }
                                 />
                             </form>
                         )

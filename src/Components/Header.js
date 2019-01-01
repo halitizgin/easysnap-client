@@ -11,7 +11,7 @@ class Header extends Component {
                 <div className="header_menu">
                     <NavLink to="/" exact>snaps</NavLink>
                     {
-                        this.props.session.activeUser ? <MenuWithLogin activeUser={this.props.session.activeUser}/> : <MenuWithUnLogin />
+                        this.props.session && this.props.session.activeUser ? <MenuWithLogin activeUser={this.props.session.activeUser}/> : <MenuWithUnLogin />
                     }
                 </div>
             </div>

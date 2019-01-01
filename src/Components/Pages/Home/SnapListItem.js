@@ -7,9 +7,9 @@ class SnapListItem extends Component {
         return (
             <li className={ snap.id < 0 ? 'optimistic' : '' }>
                 <div className="title">
-                <span className="username">@{ snap.user.username }</span>
-                &nbsp;&nbsp;
-                { snap.text }
+                    <span className="username">@{ snap.user ? snap.user.username : "not found" }</span>
+                    &nbsp;&nbsp;
+                    { snap.text }
                 </div>
                 <div className="date">
                     <span>
